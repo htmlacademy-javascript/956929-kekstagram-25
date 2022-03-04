@@ -1,9 +1,10 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Денис Макаров](https://up.htmlacademy.ru/javascript/25/user/956929).
-* Наставник: `Неизвестно`.
+* Наставник: [Владислав Молчанов](https://htmlacademy.ru/profile/id137398).
 
 ---
+
 
 _Не удаляйте и не изменяйте самовольно файлы и папки:_
 _`.editorconfig`, `.eslintrc`, `.gitattributes`, `.gitignore`, `package-lock.json`, `package.json`., `.github`_
