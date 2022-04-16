@@ -7,18 +7,25 @@ const commentsBlock = userModalElement.querySelector('.social__comments');
 const commentsCountBlock = userModalElement.querySelector('.comments-count');
 const displayCommentsCountBlock = userModalElement.querySelector('.display-comments-count');
 const commentsLoader = userModalElement.querySelector('.comments-loader');
+const commentTemplate = document.querySelector('#comment').content.querySelector('.social__comment');
 
 const ONCE_LOAD_COMMENTS_COUNT = 5;
 let currentCommentsData = [];
 
 const loadComments = () => {
   const currentCommentsCount = commentsBlock.childElementCount;
-  let appendHtml = '';
+  const commentsBlockFragment = document.createDocumentFragment();
 
   for (let i = currentCommentsCount; i < currentCommentsCount + ONCE_LOAD_COMMENTS_COUNT; i++) {
     const {avatar, message, name} = currentCommentsData[i];
-    const commentElement = `<li class="social__comment"><img class="social__picture" src="${avatar}" alt="${name}" width="35" height="35"> <p class="social__text">${message}</p></li>`;
-    appendHtml += commentElement;
+    const commentElement = commentTemplate.cloneNode(true);
+    const commentPictureElement = commentElement.querySelector('.social__picture');
+
+    commentPictureElement.src = avatar;
+    commentPictureElement.setAttribute('alt', name);
+    commentElement.querySelector('.social__text').innerText = message;
+
+    commentsBlockFragment.appendChild(commentElement);
 
     if (i === currentCommentsData.length - 1) {
       commentsLoader.classList.add('hidden');
@@ -26,7 +33,7 @@ const loadComments = () => {
     }
   }
 
-  commentsBlock.insertAdjacentHTML('beforeend', appendHtml);
+  commentsBlock.appendChild(commentsBlockFragment);
   displayCommentsCountBlock.innerHTML = commentsBlock.childElementCount.toString();
 };
 
