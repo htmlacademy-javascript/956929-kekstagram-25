@@ -5,10 +5,6 @@ function random (a, b) {
   return Math.floor(result);
 }
 
-const getRandom = (elements) => {
-  return elements[random(0, elements.length - 1)];
-};
-
 const isCorrectLength = (str, maxLength) => str.length <= maxLength;
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
@@ -38,4 +34,4 @@ const debounce = (callback, timeoutDelay = 500) => {
 };
 
 
-export {random, getRandom, isEscapeKey, isCorrectLength, showAlert, debounce};
+export {random, isEscapeKey, isCorrectLength, showAlert, debounce};
